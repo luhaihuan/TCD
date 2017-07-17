@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="OrganizationActions" extends="json-default"
+		namespace="/">
+		<action name="GetAllOrganization"
+			class="com.fuwa.ypq.organization.GetAllOrganizationAction">
+			<result name="JSON" type="json"></result>
+		</action>
+
+		<action name="AddSite" class="com.fuwa.ypq.organization.AddSiteAction">
+			<result type="json"></result>
+		</action>
+
+		<action name="ModSite" class="com.fuwa.ypq.organization.ModSiteAction">
+			<result type="json"></result>
+		</action>
+
+		<action name="DelSite" class="com.fuwa.ypq.organization.DelSiteAction">
+			<result type="json"></result>
+		</action>
+
+		<action name="GetSite" class="com.fuwa.ypq.organization.GetSiteAction">
+			<result name="JSON" type="json"></result>
+		</action>
+
+
+		<action name="GetDepartBySiteId"
+			class="com.fuwa.ypq.organization.GetDeparBySiteIdtAction">
+			<result name="JSON" type="json"></result>
+		</action>
+
+		<action name="AddDepart" class="com.fuwa.ypq.organization.AddDepartAction">
+			<result type="json"></result>
+			</action>
+			
+		<action name="ModDepart" class="com.fuwa.ypq.organization.ModDepartAction">
+			<result type="json"></result>
+			</action>
+			
+		<action name="DelDepart" class="com.fuwa.ypq.organization.DelDepartAction">
+			<result type="json"></result>
+			</action>
+			
+		<action name="GetAllFWUser" class="com.fuwa.ypq.organization.GetAllFWUserAction">
+			<result name="JSON" type="json"></result>
+			</action>
+
+		<action name="BindUser" class="com.fuwa.ypq.organization.BindUserAction">
+			<result type="json"></result>
+			</action>
+			
+		<action name="UnBindUser" class="com.fuwa.ypq.organization.UnBindUserAction">
+			<result type="json"></result>
+         </action>
+         
+         <action name="GetUserByDepartId"
+			class="com.fuwa.ypq.organization.GetUserByDepartIdAction">
+			<result name="JSON" type="json"></result>
+		</action>
+
+		
+
+
+	</package>
+
+
+
+</struts>

@@ -1,0 +1,136 @@
+.preview{  
+  background-image: url(../icons/read_file.png)!important;  
+} 
+
+.unpreview {
+	background-image: url(../icons/un_read1.png)!important; 
+}
+
+.print{  
+  background-image: url(../icons/print_file.png)!important;  
+} 
+
+.unprint {
+	background-image: url(../icons/un_print1.png)!important; 
+}
+
+.imgselect{  
+  background-color:red;
+}
+
+.user_icon {
+	background-image: url(../icons/user_16.png) !important;
+} 
+
+.depart_icon {
+	background-image: url(../icons/depart_16.png) !important;
+} 
+
+.item_icon {
+	background-image: url(../icons/item_16.png) !important;
+} 
+
+.site_icon {
+	background-image: url(../icons/site_16.png) !important;
+} 
+
+.search_icon {
+	background-image: url(../icons/search_16.png) !important;
+} 
+
+.history_icon {
+	background-image: url(../icons/history_16.png) !important;
+} 
+
+.acl_icon {
+	background-image: url(../icons/acl_16.png) !important;
+} 
+
+.clock_icon {
+	background-image: url(../icons/clock_16.png) !important;
+} 
+
+.folder_clear_icon {
+	background-image: url(../icons/folder_clear_16.png) !important;
+} 
+
+.log_icon {
+	background-image: url(../icons/log_16.png) !important;
+} 
+
+.item_rev_icon {
+	background-image: url(../icons/item_rev_16.png) !important;
+} 
+
+.product_icon {
+	background-image: url(../icons/product_16.png) !important;
+} 
+
+.bomview_icon {
+	background-image: url(../icons/bomview_16.png) !important;
+} 
+
+.parent_icon {
+	background-image: url(../icons/parent_16.png) !important;
+} 
+
+.select_download{  
+  background-image: url(../icons/select_download_16.png) !important;  
+} 
+
+.download{  
+  background-image: url(../icons/save_file.png)!important;  
+} 
+
+.special_download{  
+  background-image: url(../icons/special_download_16.png)!important;  
+} 
+
+
+.undownload {
+	background-image: url(../icons/un_download1.png)!important; 
+}
+
+#images-view .x-panel-body {
+-moz-background-clip:border;
+-moz-background-inline-policy:continuous;
+-moz-background-origin:padding;
+-x-system-font:none;
+background:white none repeat scroll 0 0;
+font-family:Arial,Helvetica,sans-serif;
+font-size:11px;
+font-size-adjust:none;
+font-stretch:normal;
+font-style:normal;
+font-variant:normal;
+font-weight:normal;
+line-height:normal;
+}
+#images-view .thumb {
+-moz-background-clip:border;
+-moz-background-inline-policy:continuous;
+-moz-background-origin:padding;
+background:#DDDDDD none repeat scroll 0 0;
+padding:3px;
+}
+#images-view .thumb img {
+height:60px;
+width:80px;
+}
+#images-view .thumb-wrap {
+float:left;
+margin:4px 0 4px 4px;
+padding:5px;
+}
+#images-view .thumb-wrap span {
+display:block;
+overflow:hidden;
+text-align:center;
+}
+#images-view .x-view-selected .thumb {
+-moz-background-clip:border;
+-moz-background-inline-policy:continuous;
+-moz-background-origin:padding;
+background:transparent none repeat scroll 0 0;
+}
+

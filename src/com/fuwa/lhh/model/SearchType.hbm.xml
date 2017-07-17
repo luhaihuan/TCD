@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+   
+<hibernate-mapping package="com.fuwa.lhh.model">
+    <class name="SearchType" table="HFPLM_FUWA_SearchType">
+    
+		<id name="id">
+			 <generator class="native"/> 			
+		</id> 
+		
+		<property name="type_id" >
+			<column name="type_id" length="255"/>
+		</property>
+
+		
+		<property name="type_name" >
+			<column name="type_name" length="255" />
+		</property>
+		<property name="type_code1" >
+			<column name="type_code1" length="255" />
+		</property>
+		
+		<property name="type_code2" >
+			<column name="type_code2" length="255" />
+		</property>
+		
+        <property name="rev_ds_rel" >
+			<column name="rev_ds_rel" length="255" />
+		</property>
+		
+		<property name="have_old_code" column="have_old_code" />
+		
+		
+		
+
+		
+		
+
+		
+		
+    </class>
+</hibernate-mapping> 

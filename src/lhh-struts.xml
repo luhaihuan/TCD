@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+
+
+<package name="TypeAction" extends="json-default" namespace="/">  		
+		<action name="GetAllType" class="com.fuwa.lhh.action.GetAllTypeAction">  
+		<result name="JSON" type="json"></result>  				
+		</action>
+		
+		<action name="CheckItemRevUpdate" class="com.fuwa.lhh.action.CheckItemRevUpdateAction">  
+		<result  type="json"></result>  				
+		</action>
+		
+	</package> 
+	
+	<package name="RecordActions" extends="json-default" namespace="/">  		
+		<action name="GetRecord" class="com.fuwa.lhh.action.GetRecordAction">  
+		<result type="json"></result>  				
+		</action>
+	</package> 
+ 	<package name="SiteActions" extends="json-default" namespace="/">  
+		<action name="GetMyAllSite" class="com.fuwa.lhh.action.GetAllSiteAction">  
+			<result name="JSON" type="json"></result>  
+		</action>
+	</package>
+	
+	<package name="DepartActions" extends="json-default" namespace="/">  
+		<action name="GetDepartACLbyType" class="com.fuwa.lhh.action.GetDepartACLbyTypeAction">  
+			<result name="JSON" type="json"></result>  
+		</action> 
+		
+		
+		<action name="GetMyDepartBySiteId" class="com.fuwa.lhh.action.GetDepartBySiteIdAction">  
+			<result name="JSON" type="json"></result>  
+		</action>
+		<action name="SaveDepartsACLbyType" class="com.fuwa.lhh.action.SaveDepartsACLbyTypeAction">  
+			<result  type="json"></result>  
+		</action>
+		
+	</package>
+	
+	
+	
+	
+	<package name="UserActions" extends="json-default" namespace="/">  
+		<action name="GetUserACLbyType" class="com.fuwa.lhh.action.GetUserACLbyTypeAction">  
+			<result name="JSON" type="json"></result>  
+		</action> 
+		<action name="GetMyAllUser" class="com.fuwa.lhh.action.GetAllUserAction">  
+			<result name="JSON" type="json"></result>  
+		</action>
+		<action name="SaveUsersACLbyType" class="com.fuwa.lhh.action.SaveUsersACLbyTypeAction">  
+			<result  type="json"></result>  
+		</action>
+		<action name="GetMyUserByDepartId" class="com.fuwa.lhh.action.GetUserByDepartIdAction">  
+			<result name="JSON" type="json"></result>  
+		</action>
+		
+	</package>
+	
+	
+	
+	<package name="ACLActions" extends="json-default" namespace="/">  
+		<action name="GetACLbyDepartIdAndUserId" class="com.fuwa.lhh.action.GetACLbyDepartIdAndUserIdAction">  
+			<result name="JSON" type="json"></result>  
+		</action> 
+		
+		<action name="ExportMyACL" class="com.fuwa.lhh.action.ExportACLAction">  
+			<result type="json"></result>  
+		</action>		
+		
+	</package>
+	
+		<package name="SearchActions" extends="json-default" namespace="/">  
+		<action name="GetMySearchItem" class="com.fuwa.lhh.action.GetSearchItemAction">  
+			<result name="JSON" type="json"></result>  
+		</action> 
+		
+			
+		
+	</package>
+	
+	
+		<package name="MaterialAttrs" extends="json-default" namespace="/">  
+		<action name="GetMaterialAttribute" class="com.fuwa.lhh.action.GetMaterialAttributeAction">  
+			<result name="JSON" type="json"></result>  
+		</action> 
+		</package>
+		
+		<package name="BOM" extends="json-default" namespace="/">  
+		<action name="GetBOM" class="com.fuwa.lhh.action.GetBOMAction">  
+			<result name="JSON" type="json"></result>  
+		</action> 
+		<action name="GetGCQBOM" class="com.fuwa.lhh.action.GetGCQBOMAction">  
+			<result name="JSON" type="json"></result>  
+		</action> 
+		<action name="GetQDQBOM" class="com.fuwa.lhh.action.GetQDQBOMAction">  
+			<result name="JSON" type="json"></result>  
+		</action> 
+
+		</package>
+		
+		<package name="ParentMaterial" extends="json-default" namespace="/">  
+		<action name="GetParentMaterial" class="com.fuwa.lhh.action.GetParentMaterialAction">  
+			<result name="JSON" type="json"></result>  
+		</action> 
+		</package>
+			
+		
+
+	
+	
+	
+	
+	
+</struts>

@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+        
+<hibernate-mapping package="com.fuwa.lhh.model">
+    <class name="Record" table="HFPLM_FUWA_RECORD">
+		<id name="id">
+			<generator class="native"/>
+		</id>
+		<property name="item_id" >
+			<column name="item_id" length="255"/>
+		</property>
+
+		
+		<property name="item_name" >
+			<column name="item_name" length="255" />
+		</property>
+		<property name="item_rev" >
+			<column name="item_rev" length="255" />
+		</property>
+
+		
+		<property name="record_date" column="record_date" />
+		
+		<property name="user_name" >
+			<column name="user_name" length="255" />
+		</property>
+		
+		<property name="type_name" >
+			<column name="type_name" length="255" />
+		</property>
+		
+
+		
+		
+
+		
+		
+    </class>
+</hibernate-mapping> 

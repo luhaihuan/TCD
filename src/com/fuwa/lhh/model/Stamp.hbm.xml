@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+        
+<hibernate-mapping package="com.fuwa.lhh.model">
+
+    <class name="Stamp" table="HFPLM_FUWA_STAMP">
+		<id name="id">
+			<generator class="native"/>
+		</id>
+		
+		<property name="stamp_id" >
+			<column name="stamp_id" length="255"/>
+		</property>
+		
+		<property name="stamp_disy_name" >
+			<column name="stamp_disy_name" length="255"/>
+		</property>
+
+		
+		<property name="stamp_true_name" >
+			<column name="stamp_true_name" length="255" />
+		</property>
+		
+		<property name="depart_name" >
+			<column name="depart_name" length="255" />
+		</property>
+
+		
+	
+		
+
+		
+		
+
+		
+		
+    </class>
+</hibernate-mapping> 

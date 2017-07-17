@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+        
+<hibernate-mapping package="com.sulliar.ypq.model">
+    <class name="ACLModel" table="hfplm_aclmodel">
+		<id name="id">
+			<generator class="native"/>
+		</id>
+		<property name="username"  >
+		<column name="username" length="255"/>
+		</property>
+		<property name="typeStr"  >
+		<column name="typeStr" length="255"/>
+		</property>
+		
+		<property name="readWord"/>		
+		<property name="printWord"/>
+		<property name="downloadWord"/>
+		
+		<property name="readExcel"/>		
+		<property name="printExcel"/>
+		<property name="downloadExcel"/>
+		
+		<property name="readPDF"/>		
+		<property name="printPDF"/>
+		<property name="downloadPDF"/>
+		
+		<property name="readForm"/>		
+		<property name="printForm"/>
+		<property name="downloadForm"/>
+		
+		
+    </class>
+</hibernate-mapping> 

@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+	
+	<bean id="configurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">  
+        <property name="locations">  
+            <list>  
+                <value>classpath:mail.properties</value>  
+            </list>  
+        </property>  
+    </bean>  
+    <bean id="mailMessage" class="org.springframework.mail.SimpleMailMessage" scope="prototype">  
+        <property name="from">  
+            <value>${mail.from}</value>  
+        </property>  
+        <!-- 查看SimpleMailMessage源码还可以注入标题,内容等 -->  
+    </bean>  
+    <!-- 申明JavaMailSenderImpl对象 -->  
+    <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">  
+        <property name="defaultEncoding" value="UTF-8" />  
+        <property name="host" value="${mail.host}" />  
+        <property name="username" value="${mail.username}" />  
+        <property name="password" value="${mail.password}" />  
+        <property name="javaMailProperties">  
+            <props>  
+                <!-- 设置认证开关 -->  
+                <prop key="mail.smtp.auth">true</prop>  
+                
+                <!-- 设置发送延时 -->
+                <prop key="mail.smtp.timeout">0</prop>
+                
+                <prop key="mail.smtp.socketFactory.class">javax.net.ssl.SSLSocketFactory</prop>         
+                
+                
+            </props>  
+        </property>  
+    </bean>  
+	
+	
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">com.sulliar.ypq.utils.MySqlServerDialect</prop>
+				<!-- <prop key="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</prop> -->
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.hbm2ddl.auto">update</prop>
+				<prop key="hibernate.temp.use_jdbc_metadata_defaults">false</prop>
+				
+			</props>
+		</property>
+    	
+		 <property name="mappingLocations"> 
+	 		<list> 
+	 		<!-- 	<value>classpath:com/sulliar/ypq/model/User.hbm.xml</value> 
+	 			<value>classpath:com/sulliar/ypq/model/ACLModel.hbm.xml</value>  -->
+	 			<value>classpath:com/sulliar/ypq/model/LogSetting.hbm.xml</value> 
+	 		<!-- 	<value>classpath:com/sulliar/ypq/model/Log.hbm.xml</value>  -->
+			</list> 
+			
+		</property>  
+
+		<property name="mappingDirectoryLocations">  <list>   
+		  <value>classpath:com/fuwa/lhh/model/</value>   
+		  </list>   
+		</property>  
+	
+	
+	 	<property name="packagesToScan" value="com.fuwa.ypq.model" />
+		
+	
+	</bean>
+
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close">
+		<property name="driverClassName" value="com.microsoft.sqlserver.jdbc.SQLServerDriver" />
+	 	 <property name="url" value="jdbc:sqlserver://localhost:1433;useUnicode=true;characterEncoding=GB18030;databaseName=paperless" />
+		<property name="username" value="sa" />
+		<property name="password" value="infodba" />  
+		
+		
+		<!-- <property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
+	 	<property name="url" value="jdbc:oracle:thin:@10.2.1.59:1521:TCD" />
+		<property name="username" value="infodba" />
+		<property name="password" value="infodba" />  -->
+		
+		
+		<!-- <property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
+	 	<property name="url" value="jdbc:oracle:thin:@10.2.1.151:1521:TC" />
+		<property name="username" value="infodba" />
+		<property name="password" value="infodba" />  -->
+		
+	</bean>
+	
+	
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	
+	<tx:advice id="txadvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<tx:method name="add*" propagation="REQUIRED" />
+			<tx:method name="del*" propagation="REQUIRED" />
+			<tx:method name="mod*" propagation="REQUIRED" />
+			
+			 
+			<tx:method name="*" propagation="REQUIRED" read-only="true" />
+		</tx:attributes>
+	</tx:advice>
+
+	
+	<aop:config>
+	  
+		<aop:pointcut id="allManagerMethod"
+			expression="execution(* com.sulliar.ypq.service.*.*(..))" />
+		<aop:advisor pointcut-ref="allManagerMethod" advice-ref="txadvice" />
+
+	</aop:config>
+
+
+</beans>

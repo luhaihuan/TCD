@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+	 
+	<bean id="UserDataManager" class="com.sulliar.ypq.service.UserDataManagerService" >
+		<property name="sessionFactory" ref="sessionFactory"/>
+		
+		<property name="siteStr" value="SSAI,SSAE"/>
+		<property name="groupStr" value="文控中心,财务部,服务部,供应链,生产部,物料部,销售支持,主机中心,质量部,IT部,工程部"/>
+	</bean>
+	
+	<bean id="ACLDataManager" class="com.sulliar.ypq.service.ACLDataManagerService">
+		<property name="sessionFactory" ref="sessionFactory"/>
+		<property name="userDataManager" ref="UserDataManager"/>
+	</bean>
+	
+	<bean id="LogSettingDataManager" class="com.sulliar.ypq.service.LogSettingDataManagerService">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	
+	<bean id="LogDataManager" class="com.sulliar.ypq.service.LogDataManagerService">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	
+	<bean id="LDAPHelper" class="com.sulliar.ypq.utils.LDAPHelper" >
+	
+		<property name="urls" value="10.13.12.10,10.11.12.10,10.6.12.10"/>
+	</bean>
+	
+	<bean id="Connection4SQL" class="com.sulliar.ypq.utils.OraCon" init-method="getConn" destroy-method="closeConn">
+<!--  		<property name="driveName" value="oracle.jdbc.driver.OracleDriver"/>
+	    <property name="url" value="jdbc:oracle:thin:@10.2.1.59:1521:tc"/> 
+		<property name="username" value="infodba"/>
+		<property name="password" value="infodba"/>	
+		
+		<property name="customFilePath" value="Y:\\Siemens\\volume"/>   --> 
+		
+		
+		<property name="driveName" value="com.microsoft.sqlserver.jdbc.SQLServerDriver" />
+	 	 <property name="url" value="jdbc:sqlserver://localhost:1433;useUnicode=true;characterEncoding=GB18030;databaseName=sutc" />
+		<property name="username" value="sa" />
+		<property name="password" value="infodba" />  
+		<property name="customFilePath" value="C:\\Siemens\\volume"/>  
+		
+		
+<!-- 		<property name="driveName" value="oracle.jdbc.driver.OracleDriver"/>
+	    <property name="url" value="jdbc:oracle:thin:@10.2.1.151:1521:TC"/> 
+		<property name="username" value="infodba"/>
+		<property name="password" value="infodba"/>		
+		<property name="customFilePath" value="Y:\\Siemens\\volume"/>  --> 		
+	</bean>
+	
+	
+	
+	<bean id="FileDataManager" class="com.sulliar.ypq.service.FileDataManagerService">
+		<property name = "doActionPath" value = "HFTempFiles"/>	
+	
+		<property name="con" ref="Connection4SQL"/>
+		<property name="acl" ref="ACLDataManager"/>
+		
+		<property name="userDataManager" ref="UserDataManager"/>
+		
+	</bean>
+	
+	<bean id="ConfigSystem" class="com.sulliar.ypq.service.ConfigSystemService" init-method="initSystem" >
+		<property name="logSettingDataManager" ref="LogSettingDataManager"/>
+		<property name="organizationDataManager" ref="organizationDataManager"/>
+	</bean>
+	
+	
+</beans>

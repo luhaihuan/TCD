@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	
+	<!-- 将Action的创建交给spring来管理 -->  
+    <constant name="struts.objectFactory" value="spring" />  
+	
+	<!-- 更改struts2请求Action的后缀名，默认为action。若想去掉后缀，设为","即可 -->
+	<constant name="struts.action.extension" value=","></constant>
+<!--
+	<package name="abstract_struts" abstract="true" extends="struts-default"
+		namespace="/">
+		<interceptors>			
+			<interceptor-stack name="myInterceptor">				
+				<interceptor-ref name="defaultStack" />
+			</interceptor-stack>
+		</interceptors>
+
+		<default-interceptor-ref name="myInterceptor" />
+		
+	</package>-->	
+	<package name="json-default" extends="struts-default">
+        <result-types>
+            <result-type name="json" class="org.apache.struts2.json.JSONResult"/>
+        </result-types>
+        <interceptors>
+            <interceptor name="json" class="org.apache.struts2.json.JSONInterceptor"/>
+        </interceptors>
+    </package>
+	
+	<package name="LoginActions" extends="json-default" namespace="/">  
+		<action name="Login" class="com.sulliar.ypq.login.LoginAction" >  
+			<result type="json"></result>  
+		</action>  
+		<action name="LDAPLogin" class="com.sulliar.ypq.login.LDAPLoginAction">  
+			<result type="json"></result>  
+		</action> 
+		<action name="Logoff" class="com.sulliar.ypq.login.LogoffAction">  
+			<result type="json"></result>  
+		</action>
+		<action name="UpdateCurrentUser" class="com.sulliar.ypq.login.UpdateCurrentUserAction">  
+			<result type="json"></result>  
+		</action> 
+	</package>
+	
+	<package name="UMActions" extends="json-default" namespace="/">  
+		<action name="GetAllUser" class="com.sulliar.ypq.userManagement.GetAllUserAction">  
+			<result name="JSON" type="json"></result>  
+		</action> 
+		
+		<action name="GetActivedUser" class="com.sulliar.ypq.userManagement.GetActivedUserAction">  
+			<result name="JSON" type="json"></result>  
+		</action>
+		
+		<action name="GetTypeByUser" class="com.sulliar.ypq.userManagement.GetTypeByUserAction">  
+			<result name="JSON" type="json"></result>  
+		</action>
+		
+		<action name="GetAllSite" class="com.sulliar.ypq.userManagement.GetAllSiteAction">  
+			<result name="JSON" type="json"></result>  
+		</action> 
+		
+		<action name="GetAllGroup" class="com.sulliar.ypq.userManagement.GetAllGroupAction">  
+			<result name="JSON" type="json"></result>  
+		</action> 
+		
+		<action name="AddUser" class="com.sulliar.ypq.userManagement.AddUserAction">  
+			<result type="json"></result>  
+		</action>
+		
+		<action name="DelUsers" class="com.sulliar.ypq.userManagement.DelUserAction">  
+			<result type="json"></result>  
+		</action>
+		
+		<action name="ModUser" class="com.sulliar.ypq.userManagement.ModUserAction">  
+			<result type="json"></result>  
+		</action>
+		
+		
+
+		
+		
+	
+	</package> 
+	
+	<package name="ACLActions" extends="json-default" namespace="/">  
+		<action name="GetACLbyType" class="com.sulliar.ypq.aclManagement.GetACLbyTypeAction">  
+			<result name="JSON" type="json"></result>  
+		</action> 
+		
+		<action name="GetACLbyAttrs" class="com.sulliar.ypq.aclManagement.GetACLbyAttrsAction">  
+			<result name="JSON" type="json"></result>  
+		</action>
+		
+		<action name="SaveACLbyType" class="com.sulliar.ypq.aclManagement.SaveACLbyTypeAction">  
+			<result type="json"></result>  
+		</action>
+		
+		<action name="ExportACL" class="com.sulliar.ypq.aclManagement.ExportACLAction">  
+			<result type="json"></result>  
+		</action>		
+		
+	</package> 
+	
+	<package name="FileActions" extends="json-default" namespace="/">  
+		<action name="GetSearchItem" class="com.sulliar.ypq.fileManagement.GetSearchItemAction">  
+			<result name="JSON" type="json"></result>  
+		</action> 
+		
+		<action name="PreviewFile" class="com.sulliar.ypq.fileManagement.PreviewFileAction">  
+			<result type="json"></result>  
+		</action> 
+		<action name="PreviewFileto" class="com.sulliar.ypq.fileManagement.PreviewFiletoAction">  
+			<result type="json"></result>  
+		</action> 
+		
+		<action name="GetAllPrinter" class="com.sulliar.ypq.fileManagement.GetAllPrinterAction">  
+			<result name="JSON" type="json"></result>  
+		</action> 
+		
+		<action name="GetWaterMark" class="com.sulliar.ypq.fileManagement.GetWaterMarkAction">  
+			<result name="JSON" type="json"></result>  
+		</action> 
+		
+		<action name="GetWaterMark4WKZX" class="com.sulliar.ypq.fileManagement.GetWaterMark4WKZXAction">  
+			<result name="JSON" type="json"></result>  
+		</action>
+		
+		<action name="PrintFile" class="com.sulliar.ypq.fileManagement.PrintFileAction">  
+			<result type="json"></result>  
+		</action>
+		
+		<action name="SaveFile" class="com.sulliar.ypq.fileManagement.SaveFileAction">  
+			<result type="json"></result>  
+		</action>
+		<action name="SaveFileto" class="com.sulliar.ypq.fileManagement.SaveFiletoAction">  
+		  <result type="json"></result>   
+		</action>
+		
+		<action name="SBDownloadAndWaterMark" class="com.sulliar.ypq.fileManagement.SBDownloadAndWaterMarkAction">  
+			<result type="json"></result>  
+		</action>
+		
+		
+		<action name="UpLoadACL" class="com.sulliar.ypq.fileManagement.UpLoadACLAction">  
+			<result type="json"></result>  
+		</action>
+		
+		<action name="BatchDownLoadFiles" class="com.sulliar.ypq.fileManagement.BatchDownLoadFilesAction">  
+			<result type="json"></result>  
+		</action>
+		
+		<action name="SpecialBatchDownload" class="com.sulliar.ypq.fileManagement.SpecialBatchDownloadAction">  
+			<result type="json">
+				<param name="contentType">text/html</param>
+			</result>  
+		</action>
+ 
+        <action name="download" class="com.sulliar.ypq.fileManagement.FileDownloadAction">  
+            <!-- 被下载的资源路径 -->  
+            <param name="inputPath">${filename}</param>  
+            <!-- 下载显示的文件名称 -->  
+            <param name="fileName">${filename}</param>  
+            
+            <result name="success" type="stream">  
+                <!-- 指定下载文件的文件类型(tomcat里面找到你需要的文件类型) --><!--  
+               <param name="contentType">application/octet-stream;charset=ISO8859-1</param>    -->             
+                <param name="contentType">application/pdf</param> 
+                 <!-- 指定stream方法名称 -->  
+                <param name="inputName">targetFile</param>  
+                <!-- 文件下载的处理方式，包括内联(inline)和附件(attachment)两种方式，默认为直接显示文件 -->  
+                <param name="contentDisposition">attachment;filename="${downloadFileName}"</param>  
+                <!-- 指定下载文件的缓冲大小 -->                
+                <param name="bufferSize">409600</param>  
+                
+            </result>  
+        </action>  
+          <action name="print" class="com.sulliar.ypq.fileManagement.FileDownloadPrintAction">  
+            <!-- 被下载的资源路径   -->
+            <param name="inputPath">${filename}</param>  
+            <!-- 下载显示的文件名称  --> 
+            <param name="fileName">${filename}</param>  
+            
+            <result name="success" type="stream">  
+               <!--  指定下载文件的文件类型(tomcat里面找到你需要的文件类型)  -->
+             <!--   <param name="contentType">application/octet-stream;charset=ISO8859-1</param>    -->             
+                <param name="contentType">application/pdf</param> 
+               <!--   指定stream方法名称   -->
+                <param name="inputName">targetFile</param>  
+             <!--   文件下载的处理方式，包括内联(inline)和附件(attachment)两种方式，默认为直接显示文件   -->
+                <param name="contentDisposition">inline;filename="${downloadFileName}"</param>  
+             <!--    指定下载文件的缓冲大小       -->          
+                <param name="bufferSize">409600</param>  
+                
+            </result>  
+        </action>  
+     
+        
+        <action name="downloadZip" class="com.sulliar.ypq.fileManagement.FileDownloadAction">  
+            <!-- 被下载的资源路径 -->  
+            <param name="inputPath">${filename}</param>  
+            <!-- 下载显示的文件名称 -->  
+            <param name="fileName">${filename}</param>  
+            
+            <result name="success" type="stream">  
+                <!-- 指定下载文件的文件类型(tomcat里面找到你需要的文件类型) --><!--  
+               <param name="contentType">application/octet-stream;charset=ISO8859-1</param>    -->             
+                <param name="contentType">application/zip</param> 
+                 <!-- 指定stream方法名称 -->  
+                <param name="inputName">targetFile</param>  
+                <!-- 文件下载的处理方式，包括内联(inline)和附件(attachment)两种方式，默认为直接显示文件 -->  
+                <param name="contentDisposition">attachment;filename="${downloadFileName}"</param>  
+                <!-- 指定下载文件的缓冲大小 -->                
+                <param name="bufferSize">409600</param>  
+                
+            </result>  
+        </action>
+        
+        <action name="downloadXlsx" class="com.sulliar.ypq.fileManagement.FileDownloadAction">  
+            <!-- 被下载的资源路径 -->  
+            <param name="inputPath">${filename}</param>  
+            <!-- 下载显示的文件名称 -->  
+            <param name="fileName">${filename}</param>  
+            
+            <result name="success" type="stream">  
+                <!-- 指定下载文件的文件类型(tomcat里面找到你需要的文件类型) --><!--  
+               <param name="contentType">application/octet-stream;charset=ISO8859-1</param>    -->             
+                <param name="contentType">application/vnd.ms-excel</param> 
+                 <!-- 指定stream方法名称 -->  
+                <param name="inputName">targetFile</param>  
+                <!-- 文件下载的处理方式，包括内联(inline)和附件(attachment)两种方式，默认为直接显示文件 -->  
+                <param name="contentDisposition">attachment;filename="${downloadFileName}"</param>  
+                <!-- 指定下载文件的缓冲大小 -->                
+                <param name="bufferSize">409600</param>  
+                
+            </result>  
+        </action>
+ 
+	</package>
+	
+	<package name="LogActions" extends="json-default" namespace="/">
+		<action name="GetLogSetting" class="com.sulliar.ypq.logSettingManagement.GetLogSettingAction">  
+			<result type="json"></result>  
+		</action>
+		
+		<action name="ModLogSetting" class="com.sulliar.ypq.logSettingManagement.ModLogSettingAction">  
+			<result type="json"></result>  
+		</action>
+		
+		<action name="GetAllLogs" class="com.sulliar.ypq.logManagement.GetAllLogsAction">  
+			<result name="JSON" type="json"></result>  
+		</action> 
+		
+		<action name="ExportLogByGroup" class="com.sulliar.ypq.logManagement.ExportLogByGroupAction">  
+			<result type="json"></result>  
+		</action>
+		
+		<action name="ExportLogByUser" class="com.sulliar.ypq.logManagement.ExportLogByUserAction">  
+			<result type="json"></result>  
+		</action>
+		
+		<action name="ExportLogByItem" class="com.sulliar.ypq.logManagement.ExportLogByItemAction">  
+			<result type="json"></result>  
+		</action>
+			
+		<action name="GetUserOverDownload" class="com.sulliar.ypq.logManagement.GetUserOverDownloadAction">  
+			<result type="json"></result>  
+			
+		</action>
+	</package>
+	
+	<package name="CacheActions" extends="json-default" namespace="/">
+		<action name="ClearCache" class="com.sulliar.ypq.cacheManagement.ClearCacheAction">  
+			<result type="json"></result>  
+		</action>
+	</package>
+	
+	<include file="lhh-struts.xml"/>
+	<include file="ypq-struts.xml"/>
+</struts>
